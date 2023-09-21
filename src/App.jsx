@@ -1,79 +1,14 @@
-import { useForm } from 'react-hook-form'
-import './stylesheet/App.css'
+import React from 'react'
+import Router from './context/Router'
+import Provider from './context/Provider'
 
-function App() {
-  const { register, handleSubmit, formState:{ errors }, watch } = useForm();
-
-  const obtenerValores = (data) => {
-
-  }
-
+const App = () => {
   return (
     <>
-      <form onSubmit={handleSubmit(obtenerValores)}>
+      <Provider >
+        <Router />
+      </Provider>
 
-        <div className='pregunta'>
-          <label htmlFor='nombre'>Name:</label>
-          <input id='nombre' placeholder='Marcos...' autoFocus
-            {...register('nombre',
-              {
-                required: true,
-                maxLength: 5,
-              })}
-          />
-        </div>
-        {errors.nombre?.type === 'required' && <div className='aviso'>The Name section is Obligatorie</div>}
-        {errors.nombre?.type === 'maxLength' && <div className='aviso'>5 letters are mandatory</div>}
-
-        <div className='pregunta'>
-          <label htmlFor='lastname'>Last Name:</label>
-          <input id='lastname' placeholder='Muster...'
-            {...register('lastname',
-              {
-                required: true,
-                maxLength: 10,
-              })}
-          />
-        </div>
-        {errors.lastname?.type === 'required' && <div className='aviso'>The Name section is Obligatorie</div>}
-        {errors.lastname?.type === 'maxLength' && <div className='aviso'>10 letters are mandatory</div>}
-
-        <div className='pregunta'>
-          <label htmlFor='edad'>Old:</label>
-          <input id='edad' type='number' placeholder='123...'
-            {...register('edad', 
-            {
-              min:1,
-              max:100
-            })}
-          />
-        </div>
-        {errors.edad?.type === 'min' && <div className='aviso'>please more than 1</div>}
-        {errors.edad?.type === 'max' && <div className='aviso'>please less than 100</div>}
-
-        <div className='pregunta'>
-          <label htmlFor='email'>E-Mail:</label>
-          <input id='email' placeholder='marcos@gmail.com' type='email'
-            {...register('email',
-            {
-              pattern:/^(([^<>()\[\]\\.,;:\s@”]+(\.[^<>()\[\]\\.,;:\s@”]+)*)|(“.+”))@((\[[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}\.[0–9]{1,3}])|(([a-zA-Z\-0–9]+\.)+[a-zA-Z]{2,}))$/
-            })}
-          />
-        </div>
-        {errors.email?.type === 'pattern' && <div className='aviso'>E-Mail not vallid!</div>}
-
-        <div className='pregunta'>
-          <input type='submit' />
-        </div>
-      </form>
-      <div className="form-text">
-        {watch('nombre') && 
-        <div className='form-text-aw'> Me Name is {watch('nombre')} 
-        {watch('edad') && <span> y tengo {watch('edad')}</span>}
-         </div> }
-        
-        </div>
-    
 
     </>
   )
