@@ -1,9 +1,8 @@
 import { useForm } from 'react-hook-form'
-import { validadorDIEGO } from './components/validador';
 import './stylesheet/App.css'
 
 function App() {
-  const { register, handleSubmit, formState:{ errors } } = useForm();
+  const { register, handleSubmit, formState:{ errors }, watch } = useForm();
 
   const obtenerValores = (data) => {
 
@@ -22,7 +21,6 @@ function App() {
                 maxLength: 5,
               })}
           />
-
         </div>
         {errors.nombre?.type === 'required' && <div className='aviso'>The Name section is Obligatorie</div>}
         {errors.nombre?.type === 'maxLength' && <div className='aviso'>5 letters are mandatory</div>}
@@ -65,25 +63,17 @@ function App() {
         {errors.email?.type === 'pattern' && <div className='aviso'>E-Mail not vallid!</div>}
 
         <div className='pregunta'>
-          <label htmlFor='telefono'>Phone:</label>
-          <input id='telefono' placeholder='079...'
-            {...register('telefono', 
-            {
-              validate:validadorDIEGO
-
-            })}
-          />
-        </div>
-        {errors.telefono?.type === 'validate' && <div className='aviso'>the phone must start with 079</div>}
-        
-
-        <div className='pregunta'>
           <input type='submit' />
         </div>
-
-
-
       </form>
+      <div className="form-text">
+        {watch('nombre') && 
+        <div className='form-text-aw'> Me Name is {watch('nombre')} 
+        {watch('edad') && <span> y tengo {watch('edad')}</span>}
+         </div> }
+        
+        </div>
+    
 
     </>
   )
