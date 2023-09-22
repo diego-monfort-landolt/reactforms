@@ -2,18 +2,24 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    
 }
+
 
 img { 
     width: 100%;
+    height: 200px;
     vertical-align: top;
     object-fit: cover;
+    margin-bottom: 10px;
+    box-shadow: 0 0 1px red;
 
 }
 .formularioZonas {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap; 
+  
 }
 
 .zona {
@@ -22,7 +28,10 @@ img {
     justify-content: space-between;
     align-items: center;
     background-color: #000;
-    padding: 9px;  
+    box-shadow: 0 0 1px #f50404;
+    
+    padding: 9px; 
+   
 }
 input {
     padding: 6px 10px;
@@ -61,11 +70,68 @@ input[type='submit'],button{
     padding: 6px 6px;
 }
 
+.linea, section {
+    display: flex;
+}
+.columna1 {
+    width: 130px;
+    
 
+}
+.columna2 {
+    flex: 1;
+
+}
+.verde {
+    color: red;
+    font-size: 0.8em;
+    margin-left: 10px;
+}
+.resumen {
+    width: 40%;
+    border-left: 1px dotted gray;
+    padding-left: 20px;
+}
+form {
+    flex: 1;
+    padding: 0 10px;
+}
 
 
 @media only screen and (min-width:680px) {
     .zonas {
         width: 24.5%;
     }
+   
+}
+
+@media print{
+    .resumen {
+        border: none;
+        width: 100%;
+        font-size: 2em;
+        display: grid;
+    }
+    .opciones {
+        display: none;
+    }
+    .columna1 {
+        width: 280px;
+    }
+    .total {
+        font-size: 1.5em;
+        color: red;
+    }
+    .informacion:nth-child(5) {
+        font-size: 1.5em;
+        margin-bottom: 20px;
+        grid-row: 2;
+    }
+    .informacion img {
+        width: 50%;
+        object-fit: cover;
+        box-shadow: 0 0 1px #000;
+    }
+
+
 }

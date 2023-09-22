@@ -24,15 +24,12 @@ function Home() {
     console.table(misDatos);
 
   };
-
-
   return (
     <>
       <form onSubmit={handleSubmit(optener)}>
         <nav>
           <span>{datos2[etapas].text}</span>
           <input type='submit' value='Enviar' />
-
           {errors.valor?.type==='required' && <span className='aviso'>Seleciona una de las opciones</span>}
         </nav>
         <div className='formularioZonas'>
